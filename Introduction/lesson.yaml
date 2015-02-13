@@ -1,0 +1,128 @@
+- Class: meta
+  Course: TA Training
+  Lesson: Introduction
+  Author: Erik Gaasedelen
+  Type: Standard
+  Organization: BIOL 3004
+  Version: 2.2.21
+
+
+- Class: text
+  Output: Welcome to the TA training for the bioinformatics section of BIOL 3004.
+    We are happy that you are interested in such a fascinating and promising field of study.
+    Bioinformatics has been evolving quickly and the pace is accelerating every day. What used to
+    be the construction of mathematical formulations for complex biological phenomena has now become
+    a firestorm of data synthesis and integration. Statistical inference is no longer feasible for the
+    researcher using pen and paper. (Or even Excel for that matter!) It is for this reason that
+    becoming experts of programming tools is absolutely essential to become the biologists of the future.
+    This may seem like the shoehorning a technical discipline into the biological sciences, but I hope you will
+    come to appreciate the many beautiful parallels between the language of programming and the language of
+    our own cells. Let's get started.
+  
+- Class: cmd_question
+  Output: Unsurprisingly, numbers are one of the most important types of data that a computer can
+    manipulate. R comes with all of the same functions that you would find on a traditional calculator.
+    We have the +, -, *, and / operators for addition, subtraction, multiplication, and division
+    respectively. Type 4 * 4 and press Enter.
+  AnswerTests: omnitest(correctExpr='4 * 4')
+  Hint: Try again. Just type 4 * 4 and press Enter
+  
+- Class: text
+  Output: Not too surprising, right? R calculated 4 * 4 and told you the answer just below your input.
+  
+- Class: text
+  Output: But what is that curious [1] just left of the 16? It turns out R is trying to tell
+    you that you have made a vector and that 16 is the first element of that vector. This is strange because
+    we cannot really work with numbers in isolation in R. R will always look at things in the context
+    of being part of a larger structure of data. In other languages you can work with numbers separately, but R takes the
+    hard stance that it wants to work with collections of data and will not compromise in its philosophy.
+    
+- Class: cmd_question
+  Output: If we are going to always be forced to work with numbers in the context of vectors, we might
+    as well learn how to make vectors with more than one element. To do this we can use the c function.
+    For example we could type c(2,5,7,11,13) and it would create a vector with five elements. The c
+    stands for concatenate, meaning to chain in a series. Try typing c(2,5,7,11,13) and press enter.
+  AnswerTests: omnitest(correctExpr='c(2,5,7,11,13)')
+  
+- Class: cmd_question
+  Output: Very frequently it is useful to look at the R documentation for a specific function if you
+    are not sure on what it does. To pull up this information all you have to do is type a question mark
+    followed by the function name. To try this with the c function, type ?c and press Enter.
+  CorrectAnswer: ?c
+  AnswerTests: omnitest(correctExpr = '?c')
+  
+- Class: text
+  Output: Very good! A window with documentation for the c function should have popped up in a window
+    titled 'Combine Values into a Vector or List'. Here you can get a lot of information and examples
+    for how to properly use the function. If you are looking for even more information, a Google
+    search will solve your problem nine times out of ten.
+    
+- Class: cmd_question
+  Output: As you might have guessed, you do not have to type out every number you want to be in a vector.
+    For example, you might want to have a vector, which contains all of the numbers from 64 to 256. To do this
+    you can do something like this, 64:256. Try typing 64:256 to see for yourself.
+  AnswerTests: omnitest(correctExpr = '64:256')
+  
+- Class: text
+  Output: And now we get more perspective on what those numbers in brackets mean. They work to index
+    each of the elements in a vector. R is smart so it will change how it shows its indexes based on
+    your screen size.
+    
+- Class: cmd_question
+  Output: We have been working to generate some very simple vectors, but so far we have no way to
+    retrieve the data we have created. To do this we will have to assign a label to it so we can refer
+    back to it later. This can be done through the '<-' operator. For example, type
+    'primes <- c(3, 5, 7, 11, 13)' and press Enter.
+  AnswerTests: omnitest(correctExpr = 'primes <- c(3, 5, 7, 11, 13)')
+  
+- Class: cmd_question
+  Output: The <- operator is designed to look like an arrow which essentially says 'take the values to
+    the right of the arrow and assign it to the label to the right.' In this case 'primes' would be
+    referred to as a variable. This is a little misleading because a programming variable is not the same
+    as a mathematical variable. It varies only so much as we could reassign the label 'primes' to a
+    completely different value if we wanted to later. If we made this decision and typed in
+    'primes <- c(1,2,3,4)', primes would now refer to c(1,2,3,4) and our original c(3,5,7,11,13) vector
+    would be lost.
+    If you look up in the upper right hand corner of RStudio underneath the 'Environment' tab, you
+    will see 'primes' show up underneath values. You can get R to tell you what a particular label
+    represents. Try that now by typing 'primes' and pressing Enter
+  AnswerTests: omnitest(correctExpr = 'primes')
+    
+- Class: text
+  Output: Variables are extremely important in every programming language. We can use them to keep
+    track of any type of data we would like whether that be numbers, text, matrices, tables, or types
+    of data that we construct ourselves. Be sure to remember how to create them.
+    
+- Class: cmd_question
+  Output: We can also assign vectors of text strings to variables. Try that now by assigning the vector
+    c("This", "is", "text") to the variable x.
+  AnswerTests: omnitest(correctExpr = 'x <- c(\"This\", \"is\", \"text\")')
+  
+- Class: cmd_question
+  Output: We are allowed to make vectors out of any data type we would like, but there is a catch in that
+    we are not allowed to put more than one type of data in a single vector. For example, see what happens
+    when you try c("Hello, my favorite number is", 7)
+  AnswerTests: omnitest(correctExpr = 'c(\"Hello, my favorite number is\", 7)')
+  
+- Class: cmd_question
+  Output: R did not throw an error, but it forced your number seven into being text. This looks like there
+    is no difference but it is. You cannot perform mathetical operations on text because it really doesnt
+    make that much sense to be able to subtract, add, or multiply words together. For example try typeing
+    "7" + "5" and pressing enter.
+  AnswerTests: omnitest(correctExpr = '\"7\" + \"5\"')
+  
+- Class: text
+  Output: This seems like a limitation of the R language, but it is actually quite helpful in minimizing
+    bugs that might seep into your code.
+    
+- Class: cmd_question
+  Output: As one last demonstration of this code let's use the sum function to find the sum of all numbers from
+    one to one-hundred. To do this, first assign a variable called test to a vector containing the numbers from 
+    one to one-hundred.
+  AnswerTests: omnitest(correctExpr = 'test <- 1:100')
+  Hint: Not quite. To do this type test <- 1:100
+  
+- Class: text
+  Output: Very good! This completes this first lesson. It may not seem like we have accomplished a lot here, but
+    it does not take long until simple concepts can be stacked to create really great programs. See you in the next
+    lesson.
