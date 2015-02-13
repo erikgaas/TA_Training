@@ -1,0 +1,79 @@
+- Class: meta
+  Course: TA Training
+  Lesson: Lesson2
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.2.21
+
+- Class: text
+  Ouput: In the last lesson we began to look at vectors and how we might use it to store
+    a row of data of the same type. You might have been thinking this is a little weird.
+    There are always common cases where you might want to have data organized in such
+    a way where you are taking advantage of many different data types. We have already
+    seen that R will try to force you into using only one of the data types specified
+    in the vector, but how does it actually choose which one it is going to use? To
+    understand this we will need to be familiar with all of the basic data types.
+    
+- Class: cmd_question
+  Ouput: You are already familiar with basic numbers and you have seen text within
+    within vectors. The next type of data you should be familiar with are boolean
+    values. There are only two boolean values, TRUE and FALSE. Simple right?
+    If you would like you can make these shorter by just typeing T and F.
+    Try this by making a variable called bool and assigning it the vector
+    c(T, F). Notice that there are no quotes surrounding the T and F. This is 
+    important. If you had put quotes around it, the computer would think you are
+    trying to write text.
+  AnswerTests: omnitest( correctExpr = 'bool <- c(T,F)')
+  
+- Class: cmd_question
+  Ouput: There is nice function called typeof which will tell you the type of your
+    vector. Try it now by typing typeof(bool) and pressing Enter
+  AnswerTests: omnitest( correctExpr = 'typeof(bool)')    
+  
+- Class: cmd_question
+  Output: Interestingly R told you what the type of that vector was by giving you
+    a vector of length one. This vector would be equivalent to c("logical").
+    Keep note that logical and boolean are synonyms in this case and both refer
+    to true or false values.
+    Consequently we can find the type of that vector as well.
+    Try typing typeof( typeof( c(T, F) ) ) and pressing Enter.
+    What do you expect the type of this vector to be?
+  AnswerTests: omnitest( correctExpr = 'typeof( typeof( c(T, F) ) )')
+  
+- Class: cmd_question
+  Output: This operation would have been the same as typeof(c("logical")), which
+    is clearly a character vector. Now back to our original topic, we wanted to figure
+    out how R decides which type should be the global type for that vector. For instance
+    c(1,"hi", T) cannot sustain three datatypes at the same time. As it might already be
+    apparent to you, text has a very high precedence so it will convert 1 to "1". The T
+    is a little strange. R will evaluate T as TRUE, and then convert it to "TRUE".
+    See what happens when you type c(1,T) though. Type that and press Enter.
+  Answertests: omnitest( correctExpr = 'c(1,T)')
+  
+- Class: text
+  Ouput: It coverted T to a 1. If we had put c(1,F) instead it would have converted it to
+    c(1,0). The point here is that different datatypes have different precedence. Characters
+    are at a higher precedent than numbers which are at a higher precedent than logicals.
+    (character > number > logical) I feel like I should also mention real quick that if you
+    peform the typeof(c(2)) you will be told that 2 is of type double. 'double' here is short
+    for 'double precision' which specifies how many bytes (Google this if you are interested)
+    the computer is using to hold onto
+    that number. You will probably not need to know this for this class, but there are going
+    to be many hints at how computers are built at the low level. In the meantime we will
+    push forward.
+    
+- Class: cmd_question
+  Output: Say we want to represent some person's data in the form of (Name, Age, Smoker).
+    We would want to use text, numbers, and logicals in order to represnt this, but so
+    far vectors won't help us. Luckily we get a fancy new data type called a list.
+    Try assigning the variable foo to list("Benny", 42, F)
+  AnswerTests: omnitest( correctExpr = 'foo <- list("Benny", 42, F)')
+    
+- Class: cmd_question
+  Ouput: Now go ahead and type foo and press enter to see how R represents this data.
+  AnswerTests: omnitest( correctExpr = 'foo')
+  
+- Class: text
+  Ouput: Very good! We are slowly getting toward data that would actually be useful for us
+    to use. 
