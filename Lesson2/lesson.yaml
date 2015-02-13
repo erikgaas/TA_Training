@@ -66,7 +66,7 @@
 - Class: cmd_question
   Output: Say we want to represent some person's data in the form of (Name, Age, Smoker).
     We would want to use text, numbers, and logicals in order to represnt this, but so
-    far vectors won't help us. Luckily we get a fancy new data type called a list.
+    far vectors won't help us. Luckily we get a fancy new data structure called a list.
     Try assigning the variable foo to list("Benny", 42, F)
   AnswerTests: omnitest( correctExpr = 'foo <- list("Benny", 42, F)')
     
@@ -76,4 +76,20 @@
   
 - Class: text
   Ouput: Very good! We are slowly getting toward data that would actually be useful for us
-    to use. 
+    to use. Lists are extremely flexible. Another thing you can do with lists is put more lists
+    and vectors inside of them. they are completely okay with that. You could have a list
+    within a list within a list within a list and R would be completely okay with that. This
+    seems like it wouldn't be all that practical, but putting lists within lists we could make
+    tables of data. For instance if we implemented our previous plan to create lists of data
+    with a person's name, age, and whether or not they are a smoker, we could just make one
+    of those for each person of interest and place them into a much larger list. Unfortunately,
+    implementing this idea would take some work. We would have to somehow find a method for 
+    searching through the data for what we wanted each time we came up with a data analysis
+    question. This does not sound very fun. Luckily R has already thought of that and created
+    a more robust data structure based on lists called a data frame.
+  
+- Class: cmd_question
+  Output: Say we want to create a very simple table where we keep track a person's name and age.
+    We can create a new data frame with information like this with the data.frame function.
+    Try this by assigning a variable df to the value data.frame(c("Alice", "Bob"), c(32, 55))
+  AnswerTests: omnitest( correctExpr = 'data.frame(c(\"Alice\", \"Bob\"), c(32, 55))')
